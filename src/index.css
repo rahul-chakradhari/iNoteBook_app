@@ -1,0 +1,11 @@
+i {
+  cursor: pointer;
+}
+.navbar-brand,
+.cursive {
+  cursor: default;
+}
+.card {
+  margin-top: 1.5rem; /* Adjust this value to control the space above the card */
+  margin-bottom: 1.5rem; /* Adjust this value to control the space below the card */
+}
