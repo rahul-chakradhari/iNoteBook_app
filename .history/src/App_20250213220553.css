@@ -21,6 +21,3 @@
 .priority-low {
   color: green;
 }
-.border-thick {
-  border-width: 12px !important; /* Customize the thickness (adjust as needed) */
-}

@@ -11,16 +11,3 @@
   padding-left: 432px;
   margin-right: -307px; /* Optional for spacing between icons */
 }
-/* In your CSS file */
-.priority-high {
-  color: red;
-}
-.priority-medium {
-  color: yellow;
-}
-.priority-low {
-  color: green;
-}
-.border-thick {
-  border-width: 12px !important; /* Customize the thickness (adjust as needed) */
-}

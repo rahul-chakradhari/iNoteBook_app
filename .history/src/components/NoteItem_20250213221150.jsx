@@ -24,7 +24,7 @@ const Noteitem = (props) => {
 
   return (
     <div className="col-md-3">
-      <div className={`card my-3 ${priorityClass} border-thick`}>
+      <div className={`card my-3 ${priorityClass} border-4`}>
         {" "}
         {/* Apply thicker border */}
         <div className="card-body">

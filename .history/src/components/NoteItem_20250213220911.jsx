@@ -19,14 +19,14 @@ const Noteitem = (props) => {
       priorityClass = "border-success"; // Green border for low priority
       break;
     default:
-      priorityClass = "border-success"; // Default to green for Low priority if no priority set
+      priorityClass = "";
   }
 
   return (
     <div className="col-md-3">
-      <div className={`card my-3 ${priorityClass} border-thick`}>
+      <div className={`card my-3 ${priorityClass} border-7`}>
         {" "}
-        {/* Apply thicker border */}
+        {/* Apply border color based on priority */}
         <div className="card-body">
           <div className="d-flex align-items-center">
             <h5 className="card-title">{note.title}</h5>

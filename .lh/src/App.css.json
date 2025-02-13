@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/App.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1739464553143,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739464967569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,4 +20,7 @@\n }\r\n .priority-low {\r\n   color: green;\r\n }\r\n+.border-thick {\r\n+  border-width: 5px !important; /* Customize the thickness (adjust as needed) */\r\n+}\r\n"
+                },
+                {
+                    "date": 1739465041434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,6 +21,6 @@\n .priority-low {\r\n   color: green;\r\n }\r\n .border-thick {\r\n-  border-width: 5px !important; /* Customize the thickness (adjust as needed) */\r\n+  border-width: 12px !important; /* Customize the thickness (adjust as needed) */\r\n }\r\n"
+                }
+            ],
+            "date": 1739464553143,
+            "name": "Commit-0",
+            "content": ".card {\r\n  margin-top: 1.5rem; /* Adjust this value to control the space above the card */\r\n  margin-bottom: 1.5rem; /* Adjust this value to control the space below the card */\r\n}\r\n.white-border {\r\n  border: 3px solid white; /* Adjust the border width and color as needed */\r\n}\r\n.icons {\r\n  display: inline-block;\r\n  text-align: center;\r\n  padding-left: 432px;\r\n  margin-right: -307px; /* Optional for spacing between icons */\r\n}\r\n/* In your CSS file */\r\n.priority-high {\r\n  color: red;\r\n}\r\n.priority-medium {\r\n  color: yellow;\r\n}\r\n.priority-low {\r\n  color: green;\r\n}\r\n"
+        }
+    ]
+}

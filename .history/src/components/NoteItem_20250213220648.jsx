@@ -6,27 +6,25 @@ const Noteitem = (props) => {
   const { deleteNote } = context;
   const { note, updateNote } = props;
 
-  // Set priority border class based on the note's priority
+  // Set priority class based on the note's priority
   let priorityClass = "";
   switch (note.priority) {
     case "High":
-      priorityClass = "border-danger"; // Red border for high priority
+      priorityClass = "text-danger"; // Red for high priority
       break;
     case "Medium":
-      priorityClass = "border-warning"; // Yellow border for medium priority
+      priorityClass = "text-warning"; // Yellow for medium priority
       break;
     case "Low":
-      priorityClass = "border-success"; // Green border for low priority
+      priorityClass = "text-success"; // Green for low priority
       break;
     default:
-      priorityClass = "border-success"; // Default to green for Low priority if no priority set
+      priorityClass = "";
   }
 
   return (
     <div className="col-md-3">
-      <div className={`card my-3 ${priorityClass} border-thick`}>
-        {" "}
-        {/* Apply thicker border */}
+      <div className="card my-3">
         <div className="card-body">
           <div className="d-flex align-items-center">
             <h5 className="card-title">{note.title}</h5>
@@ -44,7 +42,10 @@ const Noteitem = (props) => {
             ></i>
           </div>
           <p className="card-text">{note.description}</p>
-          <p className="card-text">Priority: {note.priority}</p>
+          <p className={`card-text ${priorityClass}`}>
+            Priority: {note.priority}
+          </p>{" "}
+          {/* Apply priority class */}
         </div>
       </div>
     </div>
