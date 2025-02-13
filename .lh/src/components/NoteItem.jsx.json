@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/components/NoteItem.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1739441200248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739462735363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n               }}\r\n             ></i>\r\n           </div>\r\n           <p className=\"card-text\">{note.description}</p>\r\n+          <p className=\"card-text\">{note.priority}</p>\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1739463301024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n const Noteitem = (props) => {\r\n   const context = useContext(noteContext);\r\n   const { deleteNote } = context;\r\n   const { note, updateNote } = props;\r\n+\r\n   return (\r\n     <div className=\"col-md-3\">\r\n       <div className=\"card my-3\">\r\n         <div className=\"card-body\">\r\n@@ -24,9 +25,9 @@\n               }}\r\n             ></i>\r\n           </div>\r\n           <p className=\"card-text\">{note.description}</p>\r\n-          <p className=\"card-text\">{note.priority}</p>\r\n+          <p className=\"card-text\">Priority: {note.priority}</p>\r\n         </div>\r\n       </div>\r\n     </div>\r\n   );\r\n"
+                }
+            ],
+            "date": 1739441200248,
+            "name": "Commit-0",
+            "content": "import React, { useContext } from \"react\";\r\nimport noteContext from \"../context/notes/noteContext\";\r\n\r\nconst Noteitem = (props) => {\r\n  const context = useContext(noteContext);\r\n  const { deleteNote } = context;\r\n  const { note, updateNote } = props;\r\n  return (\r\n    <div className=\"col-md-3\">\r\n      <div className=\"card my-3\">\r\n        <div className=\"card-body\">\r\n          <div className=\"d-flex align-items-center\">\r\n            <h5 className=\"card-title\">{note.title}</h5>\r\n            <i\r\n              className=\"far fa-trash-alt mx-2\"\r\n              onClick={() => {\r\n                deleteNote(note._id);\r\n              }}\r\n            ></i>\r\n            <i\r\n              className=\"far fa-edit mx-2\"\r\n              onClick={() => {\r\n                updateNote(note);\r\n              }}\r\n            ></i>\r\n          </div>\r\n          <p className=\"card-text\">{note.description}</p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Noteitem;\r\n"
+        }
+    ]
+}

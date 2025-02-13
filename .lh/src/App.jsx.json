@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/App.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1739441241695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739441258850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import \"./App.css\";\n import { BrowserRouter as Router, Switch, Route } from \"react-router-dom\";\n-import Navbar from \"./components/Navbar\";\n+import Navbar from \"./components/NavBar\";\n import { Home } from \"./components/Home\";\n import About from \"./components/About\";\n import NoteState from \"./context/notes/NoteState\";\n import { Alert } from \"./components/Alert\";\n"
+                },
+                {
+                    "date": 1739441367766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n         <Router>\n           <Navbar />\n           <Alert message=\"This is amazing React course\" />\n           <div className=\"container\">\n-            <Switch>\n+            <Routes>\n               <Route exact path=\"/\">\n                 <Home />\n               </Route>\n               <Route exact path=\"/about\">\n@@ -28,9 +28,9 @@\n               </Route>\n               <Route exact path=\"/signup\">\n                 <Signup />\n               </Route>\n-            </Switch>\n+            </Routes>\n           </div>\n         </Router>\n       </NoteState>\n     </>\n"
+                },
+                {
+                    "date": 1739441381701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import \"./App.css\";\n-import { BrowserRouter as Router, Switch, Route } from \"react-router-dom\";\n+import { BrowserRouter as Router, Routes, Route } from \"react-router-dom\";\n import Navbar from \"./components/NavBar\";\n import { Home } from \"./components/Home\";\n import About from \"./components/About\";\n import NoteState from \"./context/notes/NoteState\";\n"
+                },
+                {
+                    "date": 1739441413269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,20 +16,12 @@\n           <Navbar />\n           <Alert message=\"This is amazing React course\" />\n           <div className=\"container\">\n             <Routes>\n-              <Route exact path=\"/\">\n-                <Home />\n-              </Route>\n-              <Route exact path=\"/about\">\n-                <About />\n-              </Route>\n-              <Route exact path=\"/login\">\n-                <Login />\n-              </Route>\n-              <Route exact path=\"/signup\">\n-                <Signup />\n-              </Route>\n+              <Route path=\"/\" element={<Home />} />\n+              <Route path=\"/about\" element={<About />} />\n+              <Route path=\"/login\" element={<Login />} />\n+              <Route path=\"/signup\" element={<Signup />} />\n             </Routes>\n           </div>\n         </Router>\n       </NoteState>\n"
+                },
+                {
+                    "date": 1739442996805,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     <>\n       <NoteState>\n         <Router>\n           <Navbar />\n-          <Alert message=\"This is amazing React course\" />\n+\n           <div className=\"container\">\n             <Routes>\n               <Route path=\"/\" element={<Home />} />\n               <Route path=\"/about\" element={<About />} />\n"
+                }
+            ],
+            "date": 1739441241695,
+            "name": "Commit-0",
+            "content": "import \"./App.css\";\nimport { BrowserRouter as Router, Switch, Route } from \"react-router-dom\";\nimport Navbar from \"./components/Navbar\";\nimport { Home } from \"./components/Home\";\nimport About from \"./components/About\";\nimport NoteState from \"./context/notes/NoteState\";\nimport { Alert } from \"./components/Alert\";\nimport Signup from \"./components/Signup\";\nimport Login from \"./components/Login\";\n\nfunction App() {\n  return (\n    <>\n      <NoteState>\n        <Router>\n          <Navbar />\n          <Alert message=\"This is amazing React course\" />\n          <div className=\"container\">\n            <Switch>\n              <Route exact path=\"/\">\n                <Home />\n              </Route>\n              <Route exact path=\"/about\">\n                <About />\n              </Route>\n              <Route exact path=\"/login\">\n                <Login />\n              </Route>\n              <Route exact path=\"/signup\">\n                <Signup />\n              </Route>\n            </Switch>\n          </div>\n        </Router>\n      </NoteState>\n    </>\n  );\n}\n\nexport default App;\n"
+        }
+    ]
+}

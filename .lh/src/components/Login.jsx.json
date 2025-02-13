@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/components/Login.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1739441177164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739441336077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n import React, { useState } from \"react\";\r\n-import { useHistory } from \"react-router-dom\";\r\n+import { useNavigate } from \"react-router-dom\";\r\n \r\n-const Login = (props) => {\r\n+const Login = () => {\r\n   const [credentials, setCredentials] = useState({ email: \"\", password: \"\" });\r\n-  let history = useHistory();\r\n+  const navigate = useNavigate(); // Using useNavigate instead of useHistory\r\n \r\n   const handleSubmit = async (e) => {\r\n     e.preventDefault();\r\n     const response = await fetch(\"http://localhost:5000/api/auth/login\", {\r\n@@ -21,9 +21,9 @@\n     console.log(json);\r\n     if (json.success) {\r\n       // Save the auth token and redirect\r\n       localStorage.setItem(\"token\", json.authtoken);\r\n-      history.push(\"/\");\r\n+      navigate(\"/\"); // navigate replaces history.push\r\n     } else {\r\n       alert(\"Invalid credentials\");\r\n     }\r\n   };\r\n"
+                },
+                {
+                    "date": 1739445607425,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,12 @@\n     console.log(json);\r\n     if (json.success) {\r\n       // Save the auth token and redirect\r\n       localStorage.setItem(\"token\", json.authtoken);\r\n-      navigate(\"/\"); // navigate replaces history.push\r\n+      setTimeout(() => {\r\n+        navigate(\"/\"); // Hide the alert\r\n+      }, 500);\r\n+      // navigate replaces history.push\r\n     } else {\r\n       alert(\"Invalid credentials\");\r\n     }\r\n   };\r\n"
+                },
+                {
+                    "date": 1739445711962,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,9 @@\n     console.log(json);\r\n     if (json.success) {\r\n       // Save the auth token and redirect\r\n       localStorage.setItem(\"token\", json.authtoken);\r\n+      setAlert(\"Login successful! Welcome to iNotebook.\");\r\n       setTimeout(() => {\r\n         navigate(\"/\"); // Hide the alert\r\n       }, 500);\r\n       // navigate replaces history.push\r\n"
+                },
+                {
+                    "date": 1739445743105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     console.log(json);\r\n     if (json.success) {\r\n       // Save the auth token and redirect\r\n       localStorage.setItem(\"token\", json.authtoken);\r\n-      setAlert(\"Login successful! Welcome to iNotebook.\");\r\n+\r\n       setTimeout(() => {\r\n         navigate(\"/\"); // Hide the alert\r\n       }, 500);\r\n       // navigate replaces history.push\r\n"
+                },
+                {
+                    "date": 1739445803474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n import { useNavigate } from \"react-router-dom\";\r\n \r\n const Login = () => {\r\n   const [credentials, setCredentials] = useState({ email: \"\", password: \"\" });\r\n+  const [alert, setAlert] = useState(\"\"); // State to show alert\r\n   const navigate = useNavigate(); // Using useNavigate instead of useHistory\r\n \r\n   const handleSubmit = async (e) => {\r\n     e.preventDefault();\r\n@@ -18,16 +19,21 @@\n       }),\r\n     });\r\n     const json = await response.json();\r\n     console.log(json);\r\n+\r\n     if (json.success) {\r\n-      // Save the auth token and redirect\r\n+      // Save the auth token\r\n       localStorage.setItem(\"token\", json.authtoken);\r\n \r\n+      // Show success alert\r\n+      setAlert(\"Login successful! Redirecting...\");\r\n+\r\n+      // Hide the alert after 0.5 seconds and navigate to home page\r\n       setTimeout(() => {\r\n-        navigate(\"/\"); // Hide the alert\r\n-      }, 500);\r\n-      // navigate replaces history.push\r\n+        setAlert(\"\"); // Clear the alert message\r\n+        navigate(\"/\"); // Redirect to the home page\r\n+      }, 500); // 0.5 seconds delay\r\n     } else {\r\n       alert(\"Invalid credentials\");\r\n     }\r\n   };\r\n@@ -36,9 +42,10 @@\n     setCredentials({ ...credentials, [e.target.name]: e.target.value });\r\n   };\r\n \r\n   return (\r\n-    <div>\r\n+    <div className=\"container my-3\">\r\n+      <h2>Login</h2>\r\n       <form onSubmit={handleSubmit}>\r\n         <div className=\"mb-3\">\r\n           <label htmlFor=\"email\" className=\"form-label\">\r\n             Email address\r\n@@ -73,8 +80,11 @@\n         <button type=\"submit\" className=\"btn btn-primary\">\r\n           Submit\r\n         </button>\r\n       </form>\r\n+\r\n+      {/* Show success alert */}\r\n+      {alert && <div className=\"alert alert-success mt-3\">{alert}</div>}\r\n     </div>\r\n   );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1739445876345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,11 @@\n   };\r\n \r\n   return (\r\n     <div className=\"container my-3\">\r\n+      {/* Show success alert at the top */}\r\n+      {alert && <div className=\"alert alert-success mt-3\">{alert}</div>}\r\n+\r\n       <h2>Login</h2>\r\n       <form onSubmit={handleSubmit}>\r\n         <div className=\"mb-3\">\r\n           <label htmlFor=\"email\" className=\"form-label\">\r\n@@ -80,11 +83,8 @@\n         <button type=\"submit\" className=\"btn btn-primary\">\r\n           Submit\r\n         </button>\r\n       </form>\r\n-\r\n-      {/* Show success alert */}\r\n-      {alert && <div className=\"alert alert-success mt-3\">{alert}</div>}\r\n     </div>\r\n   );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1739445909150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n       // Hide the alert after 0.5 seconds and navigate to home page\r\n       setTimeout(() => {\r\n         setAlert(\"\"); // Clear the alert message\r\n         navigate(\"/\"); // Redirect to the home page\r\n-      }, 500); // 0.5 seconds delay\r\n+      }, 2000); // 0.5 seconds delay\r\n     } else {\r\n       alert(\"Invalid credentials\");\r\n     }\r\n   };\r\n"
+                },
+                {
+                    "date": 1739445938332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n       // Hide the alert after 0.5 seconds and navigate to home page\r\n       setTimeout(() => {\r\n         setAlert(\"\"); // Clear the alert message\r\n         navigate(\"/\"); // Redirect to the home page\r\n-      }, 2000); // 0.5 seconds delay\r\n+      }, 1000); // 0.5 seconds delay\r\n     } else {\r\n       alert(\"Invalid credentials\");\r\n     }\r\n   };\r\n"
+                }
+            ],
+            "date": 1739441177164,
+            "name": "Commit-0",
+            "content": "import React, { useState } from \"react\";\r\nimport { useHistory } from \"react-router-dom\";\r\n\r\nconst Login = (props) => {\r\n  const [credentials, setCredentials] = useState({ email: \"\", password: \"\" });\r\n  let history = useHistory();\r\n\r\n  const handleSubmit = async (e) => {\r\n    e.preventDefault();\r\n    const response = await fetch(\"http://localhost:5000/api/auth/login\", {\r\n      method: \"POST\",\r\n      headers: {\r\n        \"Content-Type\": \"application/json\",\r\n      },\r\n      body: JSON.stringify({\r\n        email: credentials.email,\r\n        password: credentials.password,\r\n      }),\r\n    });\r\n    const json = await response.json();\r\n    console.log(json);\r\n    if (json.success) {\r\n      // Save the auth token and redirect\r\n      localStorage.setItem(\"token\", json.authtoken);\r\n      history.push(\"/\");\r\n    } else {\r\n      alert(\"Invalid credentials\");\r\n    }\r\n  };\r\n\r\n  const onChange = (e) => {\r\n    setCredentials({ ...credentials, [e.target.name]: e.target.value });\r\n  };\r\n\r\n  return (\r\n    <div>\r\n      <form onSubmit={handleSubmit}>\r\n        <div className=\"mb-3\">\r\n          <label htmlFor=\"email\" className=\"form-label\">\r\n            Email address\r\n          </label>\r\n          <input\r\n            type=\"email\"\r\n            className=\"form-control\"\r\n            value={credentials.email}\r\n            onChange={onChange}\r\n            id=\"email\"\r\n            name=\"email\"\r\n            aria-describedby=\"emailHelp\"\r\n          />\r\n          <div id=\"emailHelp\" className=\"form-text\">\r\n            We'll never share your email with anyone else.\r\n          </div>\r\n        </div>\r\n        <div className=\"mb-3\">\r\n          <label htmlFor=\"password\" className=\"form-label\">\r\n            Password\r\n          </label>\r\n          <input\r\n            type=\"password\"\r\n            className=\"form-control\"\r\n            value={credentials.password}\r\n            onChange={onChange}\r\n            name=\"password\"\r\n            id=\"password\"\r\n          />\r\n        </div>\r\n\r\n        <button type=\"submit\" className=\"btn btn-primary\">\r\n          Submit\r\n        </button>\r\n      </form>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default Login;\r\n"
+        }
+    ]
+}

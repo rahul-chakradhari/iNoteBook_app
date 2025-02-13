@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/NavBar.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1739441185675,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739463901464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   return (\r\n     <nav className=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n       <div className=\"container-fluid\">\r\n         <Link className=\"navbar-brand\" to=\"/\">\r\n-          iNotebook\r\n+          iNotebook <i class=\"fa-solid fa-book\"></i>\r\n         </Link>\r\n         <button\r\n           className=\"navbar-toggler\"\r\n           type=\"button\"\r\n"
+                }
+            ],
+            "date": 1739441185675,
+            "name": "Commit-0",
+            "content": "import React from \"react\";\r\nimport { Link, useLocation } from \"react-router-dom\";\r\n\r\nconst Navbar = () => {\r\n  let location = useLocation();\r\n  return (\r\n    <nav className=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n      <div className=\"container-fluid\">\r\n        <Link className=\"navbar-brand\" to=\"/\">\r\n          iNotebook\r\n        </Link>\r\n        <button\r\n          className=\"navbar-toggler\"\r\n          type=\"button\"\r\n          data-bs-toggle=\"collapse\"\r\n          data-bs-target=\"#navbarSupportedContent\"\r\n          aria-controls=\"navbarSupportedContent\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\"\r\n        >\r\n          <span className=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div className=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n          <ul className=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n            <li className=\"nav-item\">\r\n              <Link\r\n                className={`nav-link ${\r\n                  location.pathname === \"/\" ? \"active\" : \"\"\r\n                }`}\r\n                aria-current=\"page\"\r\n                to=\"/\"\r\n              >\r\n                Home\r\n              </Link>\r\n            </li>\r\n            <li className=\"nav-item\">\r\n              <Link\r\n                className={`nav-link ${\r\n                  location.pathname === \"/about\" ? \"active\" : \"\"\r\n                }`}\r\n                to=\"/about\"\r\n              >\r\n                About\r\n              </Link>\r\n            </li>\r\n          </ul>\r\n          <form className=\"d-flex\">\r\n            <Link className=\"btn btn-primary mx-1\" to=\"/login\" role=\"button\">\r\n              Login\r\n            </Link>\r\n            <Link className=\"btn btn-primary mx-1\" to=\"/signup\" role=\"button\">\r\n              Signup\r\n            </Link>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </nav>\r\n  );\r\n};\r\n\r\nexport default Navbar;\r\n"
+        }
+    ]
+}

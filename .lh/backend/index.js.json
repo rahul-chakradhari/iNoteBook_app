@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1739440655739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1739440655739,
+            "name": "Commit-0",
+            "content": "const connectToMongo = require(\"./db\");\r\nconst express = require(\"express\");\r\nvar cors = require(\"cors\");\r\n\r\nconnectToMongo();\r\nconst app = express();\r\nconst port = 5000;\r\n\r\napp.use(cors());\r\napp.use(express.json());\r\n\r\n// Available Routes\r\napp.use(\"/api/auth\", require(\"./routes/auth\"));\r\napp.use(\"/api/notes\", require(\"./routes/notes\"));\r\n\r\napp.listen(port, () => {\r\n  console.log(`iNotebook backend listening at http://localhost:${port}`);\r\n});\r\n"
+        }
+    ]
+}
