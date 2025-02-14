@@ -72,7 +72,7 @@ JWT_SECRET=your_jwt_secret
 
 Home Page
 
-The home page allows users to view their stored notes and manage them efficiently. ![Image](https://github.com/user-attachments/assets/4f07da43-2950-49a7-94f4-e57489b1b373)
+The home page allows users to view their stored notes and manage them efficiently.                                                                                                         ![Image](https://github.com/user-attachments/assets/4f07da43-2950-49a7-94f4-e57489b1b373)
 
 Submit Suggestion
 
