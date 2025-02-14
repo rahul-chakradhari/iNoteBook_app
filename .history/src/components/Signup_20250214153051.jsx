@@ -38,7 +38,7 @@ const Signup = () => {
         localStorage.setItem("token", json.authtoken);
 
         // Show success alert
-        setSuccessMessage("Welcome to iNotebook! Your journey begins now...");
+        setSuccessMessage("Signup successful! Redirecting...");
 
         // Wait for 1 second before redirecting
         setTimeout(() => {
@@ -117,7 +117,7 @@ const Signup = () => {
             value={user.password}
             onChange={onChange}
             required
-            minLength={8}
+            minLength={5}
           />
         </div>
         <button type="submit" className="btn btn-primary" disabled={loading}>

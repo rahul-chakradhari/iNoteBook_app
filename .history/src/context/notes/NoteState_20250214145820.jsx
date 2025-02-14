@@ -5,62 +5,44 @@ const NoteState = (props) => {
   const host = "http://localhost:5000";
   const [notes, setNotes] = useState([]);
 
-  // Get the authentication token
-  const getAuthToken = () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.error(
-        "Authentication token is missing! User might not be logged in."
-      );
-      return null;
-    }
-    return token;
-  };
-
   // Get all Notes
   const getNotes = async () => {
-    const token = localStorage.getItem("token"); // ✅ Get token
-    console.log("Using Token:", token); // ✅ Check if token is available
-
-    if (!token) {
-      console.error("No token found. User is not authenticated.");
-      return;
-    }
-
-    const response = await fetch(
-      "http://localhost:5000/api/notes/fetchallnotes",
-      {
+    try {
+      const response = await fetch(`${host}/api/notes/fetchallnotes`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token, // ✅ Send token in headers
+          "auth-token": localStorage.getItem("token"),
         },
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text(); // Log the response text if available
+        throw new Error(`Failed to fetch notes: ${errorText}`);
       }
-    );
 
-    const data = await response.json();
-    console.log("Notes Response:", data); // ✅ Debugging
-
-    if (response.ok) {
-      setNotes(data);
-    } else {
-      console.error("Failed to fetch notes:", data.error);
+      const json = await response.json();
+      setNotes(
+        json.map((note) => ({
+          ...note,
+          priority: note.priority || "Low", // Ensure priority is always set
+        }))
+      );
+    } catch (error) {
+      console.error("Error fetching notes:", error);
     }
   };
 
   // Add a Note
   const addNote = async (title, description, priority) => {
     try {
-      const token = getAuthToken();
-      if (!token) return;
-
       const response = await fetch(`${host}/api/notes/addnote`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token,
+          "auth-token": localStorage.getItem("token"),
         },
-        body: JSON.stringify({ title, description, priority }),
+        body: JSON.stringify({ title, description, priority }), // Correct field name 'priority'
       });
 
       if (!response.ok) {
@@ -68,7 +50,7 @@ const NoteState = (props) => {
       }
 
       const note = await response.json();
-      setNotes((prevNotes) => [...prevNotes, note]);
+      setNotes((prevNotes) => [...prevNotes, note]); // Use previous state to append the new note
     } catch (error) {
       console.error("Error adding note:", error);
     }
@@ -77,14 +59,11 @@ const NoteState = (props) => {
   // Delete a Note
   const deleteNote = async (id) => {
     try {
-      const token = getAuthToken();
-      if (!token) return;
-
       const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token,
+          "auth-token": localStorage.getItem("token"),
         },
       });
 
@@ -92,7 +71,7 @@ const NoteState = (props) => {
         throw new Error("Failed to delete note");
       }
 
-      setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+      setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id)); // Remove the deleted note from state
     } catch (error) {
       console.error("Error deleting note:", error);
     }
@@ -101,14 +80,11 @@ const NoteState = (props) => {
   // Edit a Note
   const editNote = async (id, title, description, priority) => {
     try {
-      const token = getAuthToken();
-      if (!token) return;
-
       const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token,
+          "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({ title, description, priority }),
       });
@@ -118,6 +94,7 @@ const NoteState = (props) => {
       }
 
       const updatedNote = await response.json();
+
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
           note._id === id

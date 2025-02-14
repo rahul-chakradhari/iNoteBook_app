@@ -29,7 +29,7 @@ const Login = () => {
         localStorage.setItem("token", data.authtoken);
 
         // Show success message
-        setSuccessMessage("Welcome back! Redirecting you to your dashboard...");
+        setSuccessMessage("Login successful! Redirecting...");
 
         // Redirect after 1 second
         setTimeout(() => {

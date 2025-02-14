@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1739517326832,
@@ -24,6 +24,10 @@
                 {
                     "date": 1739518902420,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,11 @@\n   if (error) return <div className=\"alert alert-danger\">{error}</div>;\r\n \r\n   return (\r\n     <div>\r\n-      <h2>Top Suggestions</h2>\r\n+      <h2>\r\n+        Top Suggestions <i className=\"fa-solid fa-fire\"></i>{\" \"}\r\n+      </h2>\r\n       <ul className=\"list-group\">\r\n         {topSuggestions.map((suggestion) => (\r\n           <li key={suggestion._id} className=\"list-group-item\">\r\n             <strong>{suggestion.suggestion}</strong>\r\n"
+                },
+                {
+                    "date": 1739528959284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,18 @@\n \r\n   const fetchTopSuggestions = async () => {\r\n     try {\r\n       const response = await fetch(\r\n-        \"http://localhost:5000/api/sugg/top-suggestions\"\r\n+        \"http://localhost:5000/api/sugg/top-suggestions\",\r\n+        {\r\n+          method: \"GET\",\r\n+          headers: {\r\n+            \"Content-Type\": \"application/json\",\r\n+            \"auth-token\": localStorage.getItem(\"token\"), // Include auth-token here\r\n+          },\r\n+        }\r\n       );\r\n+\r\n       const data = await response.json();\r\n       setTopSuggestions(data);\r\n     } catch (error) {\r\n       console.error(\"Error fetching top suggestions:\", error);\r\n@@ -29,18 +37,17 @@\n \r\n   return (\r\n     <div>\r\n       <h2>\r\n-        Top Suggestions <i className=\"fa-solid fa-fire\"></i>{\" \"}\r\n+        Top Suggestions <i className=\"fa-solid fa-fire\"></i>\r\n       </h2>\r\n       <ul className=\"list-group\">\r\n         {topSuggestions.map((suggestion) => (\r\n           <li key={suggestion._id} className=\"list-group-item\">\r\n             <strong>{suggestion.suggestion}</strong>\r\n             <p>\r\n               <strong>Name:</strong> {suggestion.name}\r\n-            </p>{\" \"}\r\n-            {/* Display User's Name */}\r\n+            </p>\r\n             <p>\r\n               <strong>Email:</strong> {suggestion.email}\r\n             </p>\r\n             <hr />\r\n"
                 }
             ],
             "date": 1739517326832,

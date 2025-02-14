@@ -19,13 +19,13 @@ const NoteState = (props) => {
 
   // Get all Notes
   const getNotes = async () => {
-    const token = localStorage.getItem("token"); // ✅ Get token
-    console.log("Using Token:", token); // ✅ Check if token is available
-
+    const token = localStorage.getItem("token");
     if (!token) {
       console.error("No token found. User is not authenticated.");
       return;
     }
+
+    console.log("Using Token:", token); // Debug token
 
     const response = await fetch(
       "http://localhost:5000/api/notes/fetchallnotes",
@@ -33,19 +33,19 @@ const NoteState = (props) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token, // ✅ Send token in headers
+          "auth-token": token, // Ensure token is sent
         },
       }
     );
 
-    const data = await response.json();
-    console.log("Notes Response:", data); // ✅ Debugging
-
-    if (response.ok) {
-      setNotes(data);
-    } else {
-      console.error("Failed to fetch notes:", data.error);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Failed to fetch notes: ${errorText}`);
     }
+
+    const json = await response.json();
+    console.log("Fetched Notes:", json); // Debugging fetched notes
+    setNotes(json);
   };
 
   // Add a Note

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import Navbar from "./components/NavBar";
 import { Home } from "./components/Home";
 import About from "./components/About";
@@ -13,7 +18,9 @@ import TopSuggestions from "./components/Topsuggestion";
 function App() {
   const [topSuggestions, setTopSuggestions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // Navigate hook to programmatically redirect
 
+  // Fetch Top Suggestions
   const fetchTopSuggestions = async () => {
     try {
       const response = await fetch(
@@ -29,8 +36,11 @@ function App() {
   };
 
   useEffect(() => {
+    // Always redirect to home on page reload
+    navigate("/"); // Redirect to home page
+
     fetchTopSuggestions();
-  }, []);
+  }, [navigate]); // Add navigate as dependency to ensure it works correctly on route change
 
   return (
     <NoteState>

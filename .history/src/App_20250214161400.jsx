@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import { Home } from "./components/Home";
 import About from "./components/About";
@@ -13,6 +13,7 @@ import TopSuggestions from "./components/Topsuggestion";
 function App() {
   const [topSuggestions, setTopSuggestions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // useNavigate hook for navigation
 
   const fetchTopSuggestions = async () => {
     try {
@@ -32,32 +33,37 @@ function App() {
     fetchTopSuggestions();
   }, []);
 
+  // Redirect to home page on reload
+  useEffect(() => {
+    if (window.location.pathname !== "/") {
+      navigate("/"); // Redirect to home page if not already on home
+    }
+  }, [navigate]);
+
   return (
     <NoteState>
-      <Router>
-        <Navbar />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route
-              path="/sugg"
-              element={<Suggestion onSubmitSuccess={fetchTopSuggestions} />}
-            />
-            <Route
-              path="/top-suggestions"
-              element={
-                <TopSuggestions
-                  topSuggestions={topSuggestions}
-                  loading={loading}
-                />
-              }
-            />
-          </Routes>
-        </div>
-      </Router>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/sugg"
+            element={<Suggestion onSubmitSuccess={fetchTopSuggestions} />}
+          />
+          <Route
+            path="/top-suggestions"
+            element={
+              <TopSuggestions
+                topSuggestions={topSuggestions}
+                loading={loading}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </NoteState>
   );
 }
