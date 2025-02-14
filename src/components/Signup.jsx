@@ -68,7 +68,10 @@ const Signup = () => {
       )}
       {/* Show error alert */}
       {error && <div className="alert alert-danger mt-3">{error}</div>}
-      <h2>Signup</h2> <br />
+      <h2>
+        Signup <i className="fa-solid fa-user-plus"></i>{" "}
+      </h2>{" "}
+      <br />
       <h6>
         <i>
           * If logged in user then go to login page <br />{" "}

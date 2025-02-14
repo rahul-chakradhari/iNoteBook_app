@@ -41,6 +41,7 @@ const AddNote = () => {
             onChange={onChange}
             minLength={5}
             required
+            placeholder="minimum 5 characters needed "
           />
         </div>
         <div className="mb-3">
@@ -56,6 +57,7 @@ const AddNote = () => {
             onChange={onChange}
             minLength={5}
             required
+            placeholder="minimum 5 characters needed "
           />
         </div>
 

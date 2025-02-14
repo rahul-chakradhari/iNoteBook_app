@@ -102,6 +102,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
             value={suggestionData.name}
             onChange={handleChange}
             required
+            placeholder="Minimum length of 5 characters"
           />
         </div>
         <div className="mb-3">
@@ -116,6 +117,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
             value={suggestionData.email}
             onChange={handleChange}
             required
+            placeholder="finish with  @gmail.com"
           />
         </div>
         <div className="mb-3">

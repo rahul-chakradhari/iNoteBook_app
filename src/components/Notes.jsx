@@ -107,6 +107,7 @@ const Notes = () => {
                       onChange={onChange}
                       minLength={5}
                       required
+                      placeholder="Minimum 5 characters needed "
                     />
                   </div>
                   <div className="mb-3">
@@ -122,6 +123,7 @@ const Notes = () => {
                       onChange={onChange}
                       minLength={5}
                       required
+                      placeholder="minimum 5 characters needed"
                     />
                   </div>
                   <div className="mb-3">
@@ -174,8 +176,8 @@ const Notes = () => {
         <h6>
           #{" "}
           <i>
-            By default color of priority is grey , so change the prority to
-            other then to same to see the color effect
+            By default color of the priority is grey , so update the priority
+            again to see the color effect
           </i>
         </h6>
         <div className="container mx-2">

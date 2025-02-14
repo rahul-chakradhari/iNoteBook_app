@@ -60,7 +60,9 @@ const Login = () => {
       {/* Show error alert */}
       {alert && <div className="alert alert-danger mt-3">{alert}</div>}
 
-      <h2>Login</h2>
+      <h2>
+        Login <i className="fa-solid fa-address-card"></i>{" "}
+      </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
