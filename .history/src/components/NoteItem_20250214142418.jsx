@@ -1,25 +1,29 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import noteContext from "../context/notes/noteContext";
+
 const Noteitem = (props) => {
-  const context = useContext(noteContext);
-  const { deleteNote } = context;
+  const { deleteNote } = useContext(noteContext);
   const { note, updateNote } = props;
 
-  // Fix priority case sensitivity to match "Low", "Medium", "High"
-  let priorityClass = "";
-  switch (note.priority.toLowerCase()) {
-    case "high":
-      priorityClass = "border-danger"; // Red border for high priority
-      break;
-    case "medium":
-      priorityClass = "border-warning"; // Yellow border for medium priority
-      break;
-    case "low":
-      priorityClass = "border-success"; // Green border for low priority
-      break;
-    default:
-      priorityClass = "border-secondary"; // Default to gray if undefined
-  }
+  // State to manage the priority class for the border color
+  const [priorityClass, setPriorityClass] = useState("");
+
+  useEffect(() => {
+    // Dynamically set priority class based on note.priority
+    switch (note.priority.toLowerCase()) {
+      case "high":
+        setPriorityClass("border-danger"); // Red border for high priority
+        break;
+      case "medium":
+        setPriorityClass("border-warning"); // Yellow border for medium priority
+        break;
+      case "low":
+        setPriorityClass("border-success"); // Green border for low priority
+        break;
+      default:
+        setPriorityClass("border-secondary"); // Default to grey if undefined
+    }
+  }, [note.priority]); // This effect runs whenever note.priority changes
 
   return (
     <div className="col-md-3">

@@ -166,17 +166,13 @@ const Notes = () => {
           Saved Notes <i className="fa-solid fa-clipboard"></i>
         </h2>
         <h6>
-          🌈 Priority Color Guide: <br />
-          🔴 Red - Urgent! High Priority <br /> 🟡 Yellow - Attention! Medium
-          Priority <br />
-          🟢 Green - Calm! Low Priority
+          Color combination green - for low priority <br />
+          yellow - for medium priority <br />
+          red - for high priority
         </h6>
         <h6>
-          #{" "}
-          <i>
-            By default color of priority is grey , so change the prority to
-            other then to same to see the color effect
-          </i>
+          The by default color of priority is grey , so update the prority to
+          see the color effect
         </h6>
         <div className="container mx-2">
           {filteredNotes.length === 0 && "No notes to display"}

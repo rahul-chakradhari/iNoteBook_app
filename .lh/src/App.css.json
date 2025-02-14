@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1739464553143,
@@ -44,6 +44,14 @@
                 {
                     "date": 1739520268629,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,17 +12,9 @@\n   padding-left: 432px;\r\n   margin-right: -307px; /* Optional for spacing between icons */\r\n }\r\n /* In your CSS file */\r\n-.priority-high {\r\n-  color: red;\r\n-}\r\n-.priority-medium {\r\n-  color: yellow;\r\n-}\r\n-.priority-low {\r\n-  color: green;\r\n-}\r\n+\r\n /* Custom 12px thick border */\r\n .border-thick {\r\n   border-width: 12px !important; /* Ensures 12px border thickness */\r\n   border-style: solid; /* Make sure the border style is solid */\r\n"
+                },
+                {
+                    "date": 1739523834030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,27 @@\n }\r\n .white-border {\r\n   border: 3px solid white; /* Adjust the border width and color as needed */\r\n }\r\n+/* CSS for Hover Effect */\r\n+.card:hover .card-body {\r\n+  position: relative;\r\n+}\r\n+\r\n+.card:hover .card-body::after {\r\n+  content: \"Green: Low Priority, Yellow: Medium Priority, Red: High Priority\";\r\n+  position: absolute;\r\n+  bottom: 10px;\r\n+  left: 10px;\r\n+  font-size: 0.8rem;\r\n+  background-color: rgba(0, 0, 0, 0.7);\r\n+  color: white;\r\n+  padding: 5px;\r\n+  border-radius: 5px;\r\n+  max-width: 200px;\r\n+  word-wrap: break-word;\r\n+}\r\n+\r\n .icons {\r\n   display: inline-block;\r\n   text-align: center;\r\n   padding-left: 432px;\r\n"
+                },
+                {
+                    "date": 1739523872500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,27 +5,9 @@\n }\r\n .white-border {\r\n   border: 3px solid white; /* Adjust the border width and color as needed */\r\n }\r\n-/* CSS for Hover Effect */\r\n-.card:hover .card-body {\r\n-  position: relative;\r\n-}\r\n \r\n-.card:hover .card-body::after {\r\n-  content: \"Green: Low Priority, Yellow: Medium Priority, Red: High Priority\";\r\n-  position: absolute;\r\n-  bottom: 10px;\r\n-  left: 10px;\r\n-  font-size: 0.8rem;\r\n-  background-color: rgba(0, 0, 0, 0.7);\r\n-  color: white;\r\n-  padding: 5px;\r\n-  border-radius: 5px;\r\n-  max-width: 200px;\r\n-  word-wrap: break-word;\r\n-}\r\n-\r\n .icons {\r\n   display: inline-block;\r\n   text-align: center;\r\n   padding-left: 432px;\r\n"
                 }
             ],
             "date": 1739464553143,

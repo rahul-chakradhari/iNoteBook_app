@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1739441116576,
@@ -48,6 +48,10 @@
                 {
                     "date": 1739520419456,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n         Add Your Notes <i className=\"fa-solid fa-notes-medical\"></i>\r\n       </h2>\r\n       <form className=\"my-3\">\r\n         <div className=\"mb-3\">\r\n-          <label htmlFor=\"title\" className=\"border-thick\">\r\n+          <label htmlFor=\"title\" className=\"form-label\">\r\n             Title\r\n           </label>\r\n           <input\r\n             type=\"text\"\r\n"
+                },
+                {
+                    "date": 1739522955875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   });\r\n \r\n   const handleClick = (e) => {\r\n     e.preventDefault();\r\n-    addNote(note.title, note.description, note.priority); // Use priority instead of tag\r\n+    addNote(note.title, note.description, note.priority);\r\n     setNote({ title: \"\", description: \"\", priority: \"\" });\r\n   };\r\n \r\n   const onChange = (e) => {\r\n"
                 }
             ],
             "date": 1739441116576,

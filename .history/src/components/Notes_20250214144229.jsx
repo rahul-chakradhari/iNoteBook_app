@@ -174,8 +174,8 @@ const Notes = () => {
         <h6>
           #{" "}
           <i>
-            By default color of priority is grey , so change the prority to
-            other then to same to see the color effect
+            The by default color of priority is grey , so change the prority to
+            other then to same see the color effect
           </i>
         </h6>
         <div className="container mx-2">

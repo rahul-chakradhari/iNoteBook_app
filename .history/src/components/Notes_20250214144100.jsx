@@ -172,11 +172,8 @@ const Notes = () => {
           🟢 Green - Calm! Low Priority
         </h6>
         <h6>
-          #{" "}
-          <i>
-            By default color of priority is grey , so change the prority to
-            other then to same to see the color effect
-          </i>
+          # The by default color of priority is grey , so change the prority to
+          other then to same see the color effect
         </h6>
         <div className="container mx-2">
           {filteredNotes.length === 0 && "No notes to display"}

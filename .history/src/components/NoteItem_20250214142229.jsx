@@ -17,8 +17,8 @@ const Noteitem = (props) => {
     case "low":
       priorityClass = "border-success"; // Green border for low priority
       break;
-    default:
-      priorityClass = "border-secondary"; // Default to gray if undefined
+    //default:
+    //priorityClass = "border-secondary"; // Default to gray if undefined
   }
 
   return (
