@@ -6,10 +6,6 @@ const SuggSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
-  name: {
-    type: String,
-    required: true, // Ensure name is mandatory
-  },
   email: {
     type: String,
     required: true,

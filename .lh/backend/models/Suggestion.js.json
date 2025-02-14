@@ -1,0 +1,18 @@
+{
+    "sourceFile": "backend/models/Suggestion.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1739518121562,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1739518121562,
+            "name": "Commit-0",
+            "content": "const mongoose = require(\"mongoose\");\r\nconst { Schema } = mongoose;\r\n\r\nconst SuggSchema = new Schema({\r\n  user: {\r\n    type: mongoose.Schema.Types.ObjectId,\r\n    ref: \"user\",\r\n  },\r\n  name: {\r\n    type: String,\r\n    required: true, // Ensure name is mandatory\r\n  },\r\n  email: {\r\n    type: String,\r\n    required: true,\r\n    unique: true,\r\n  },\r\n  suggestion: {\r\n    type: String,\r\n    required: true,\r\n  },\r\n\r\n  date: {\r\n    type: Date,\r\n    default: Date.now,\r\n  },\r\n});\r\n\r\nmodule.exports = mongoose.model(\"Suggestion\", SuggSchema);\r\n"
+        }
+    ]
+}

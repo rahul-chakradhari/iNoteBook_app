@@ -24,7 +24,6 @@ router.post(
     body("suggestion", "Suggestion must be at least 5 characters").isLength({
       min: 5,
     }),
-    body("name", "Name is required").notEmpty(), // Validate name
   ],
   async (req, res) => {
     try {
@@ -39,7 +38,6 @@ router.post(
       const newSuggestion = new Suggestion({
         suggestion,
         email,
-        name,
         user: req.user.id,
       });
 

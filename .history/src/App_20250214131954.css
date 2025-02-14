@@ -1,7 +1,6 @@
 .card {
   margin-top: 1.5rem; /* Adjust this value to control the space above the card */
-  margin-bottom: 1.5rem;
-  border-width: 12px; /* Adjust this value to control the space below the card */
+  margin-bottom: 1.5rem; /* Adjust this value to control the space below the card */
 }
 .white-border {
   border: 3px solid white; /* Adjust the border width and color as needed */
@@ -13,9 +12,16 @@
   margin-right: -307px; /* Optional for spacing between icons */
 }
 /* In your CSS file */
-
-/* Custom 12px thick border */
-.border-thick {
-  border-width: 12px !important; /* Ensures 12px border thickness */
-  border-style: solid; /* Make sure the border style is solid */
+.priority-high {
+  color: red;
+}
+.priority-medium {
+  color: yellow;
+}
+.priority-low {
+  color: green;
+}
+.border-thick,
+.card-body {
+  border-width: 14px !important; /* Customize the thickness (adjust as needed) */
 }

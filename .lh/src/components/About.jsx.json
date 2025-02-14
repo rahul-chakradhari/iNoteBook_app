@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1739443794766,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739519080573,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,17 +50,8 @@\n         experience to users. This is not just any note-taking application; it\r\n         will keep you productive and focused on keeping you organized anywhere\r\n         you go.\r\n       </div>\r\n-      <h5 className=\"icons\">\r\n-        <i className=\"fa-brands fa-whatsapp\"></i>\r\n-      </h5>\r\n-      <h5 className=\"icons\">\r\n-        <i className=\"fa-brands fa-instagram\"></i>\r\n-      </h5>\r\n-      <h5 className=\"icons\">\r\n-        <i className=\"fa-brands fa-linkedin\"></i>\r\n-      </h5>\r\n     </div>\r\n   );\r\n };\r\n \r\n"
                 }
             ],
             "date": 1739443794766,

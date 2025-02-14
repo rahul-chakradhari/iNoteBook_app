@@ -14,7 +14,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       // If token is not present, redirect to login page
-      navigate("/login", { replace: true });
+      navigate("/login");
     }
   }, [navigate]); // Run effect only on component mount
 
@@ -52,28 +52,28 @@ const Suggestion = ({ onSubmitSuccess }) => {
       });
 
       const json = await response.json();
+      console.log(json); // Log the response to check the structure
 
+      // Check for success response from the server
       if (json.success) {
         setAlert({
-          message:
-            "Your suggestion has been successfully submitted. Thank you for your input!",
+          message: "Suggestion submitted successfully!",
           type: "success",
         });
         setSuggestionData({ name: "", email: "", suggestion: "" });
         onSubmitSuccess();
         setTimeout(() => setAlert({ message: "", type: "" }), 3000);
       } else {
+        // Handle error if the success field is false or not found
         setAlert({
-          message:
-            json.message ||
-            "Failed to submit suggestion. Please try again later.",
+          message: json.message || "Failed to submit suggestion. Try again.",
           type: "danger",
         });
       }
     } catch (error) {
+      // Handle any errors during the fetch request
       setAlert({
-        message:
-          "Sorry, we couldn't process your suggestion at this time. Please try again later.",
+        message: "Server error, please try again later.",
         type: "danger",
       });
     }

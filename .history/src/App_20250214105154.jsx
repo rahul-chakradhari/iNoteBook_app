@@ -8,7 +8,7 @@ import { Alert } from "./components/Alert";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Suggestion from "./components/Suggestion";
-import TopSuggestions from "./components/Topsuggestion";
+import TopSuggestions from "./components/TopSuggestions";
 
 function App() {
   const [topSuggestions, setTopSuggestions] = useState([]);

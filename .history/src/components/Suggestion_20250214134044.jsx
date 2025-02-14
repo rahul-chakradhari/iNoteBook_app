@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Use the useNavigate hook
 
 const Suggestion = ({ onSubmitSuccess }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       // If token is not present, redirect to login page
-      navigate("/login", { replace: true });
+      navigate("/login");
     }
   }, [navigate]); // Run effect only on component mount
 
@@ -55,8 +55,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
 
       if (json.success) {
         setAlert({
-          message:
-            "Your suggestion has been successfully submitted. Thank you for your input!",
+          message: "Suggestion submitted successfully!",
           type: "success",
         });
         setSuggestionData({ name: "", email: "", suggestion: "" });
@@ -64,16 +63,13 @@ const Suggestion = ({ onSubmitSuccess }) => {
         setTimeout(() => setAlert({ message: "", type: "" }), 3000);
       } else {
         setAlert({
-          message:
-            json.message ||
-            "Failed to submit suggestion. Please try again later.",
+          message: "Failed to submit suggestion. Try again.",
           type: "danger",
         });
       }
     } catch (error) {
       setAlert({
-        message:
-          "Sorry, we couldn't process your suggestion at this time. Please try again later.",
+        message: "Server error, please try again later.",
         type: "danger",
       });
     }

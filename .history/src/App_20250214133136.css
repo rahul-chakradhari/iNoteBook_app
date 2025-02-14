@@ -13,9 +13,15 @@
   margin-right: -307px; /* Optional for spacing between icons */
 }
 /* In your CSS file */
-
-/* Custom 12px thick border */
+.priority-high {
+  color: red;
+}
+.priority-medium {
+  color: yellow;
+}
+.priority-low {
+  color: green;
+}
 .border-thick {
-  border-width: 12px !important; /* Ensures 12px border thickness */
-  border-style: solid; /* Make sure the border style is solid */
+  border-width: 14px !important; /* Customize the thickness (adjust as needed) */
 }

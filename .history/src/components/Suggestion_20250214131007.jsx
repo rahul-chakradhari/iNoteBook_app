@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 const Suggestion = ({ onSubmitSuccess }) => {
-  const navigate = useNavigate();
   const [suggestionData, setSuggestionData] = useState({
     name: "",
     email: "",
     suggestion: "",
   });
-  const [alert, setAlert] = useState({ message: "", type: "" });
-
-  // Check if the user is logged in (token exists in localStorage)
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      // If token is not present, redirect to login page
-      navigate("/login", { replace: true });
-    }
-  }, [navigate]); // Run effect only on component mount
+  const [alert, setAlert] = useState({ message: "", type: "" }); // Alert state with type
 
   const handleChange = (e) => {
     setSuggestionData({
@@ -24,7 +14,6 @@ const Suggestion = ({ onSubmitSuccess }) => {
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,7 +34,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
           "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({
-          name: suggestionData.name,
+          name: suggestionData.name, // Include name
           email: suggestionData.email,
           suggestion: suggestionData.suggestion,
         }),
@@ -55,25 +44,23 @@ const Suggestion = ({ onSubmitSuccess }) => {
 
       if (json.success) {
         setAlert({
-          message:
-            "Your suggestion has been successfully submitted. Thank you for your input!",
+          message: "Suggestion submitted successfully!",
           type: "success",
         });
         setSuggestionData({ name: "", email: "", suggestion: "" });
-        onSubmitSuccess();
+
+        onSubmitSuccess(); // Refresh suggestions
+
         setTimeout(() => setAlert({ message: "", type: "" }), 3000);
       } else {
         setAlert({
-          message:
-            json.message ||
-            "Failed to submit suggestion. Please try again later.",
-          type: "danger",
+          message: "Submitted",
+          type: "success",
         });
       }
     } catch (error) {
       setAlert({
-        message:
-          "Sorry, we couldn't process your suggestion at this time. Please try again later.",
+        message: "Server error, please try again later.",
         type: "danger",
       });
     }
@@ -87,7 +74,9 @@ const Suggestion = ({ onSubmitSuccess }) => {
         </div>
       )}
 
-      <h3>Submit Your Suggestions</h3>
+      <h3>
+        Submit Your Suggestions <i className="fa-solid fa-circle-plus"></i>
+      </h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
