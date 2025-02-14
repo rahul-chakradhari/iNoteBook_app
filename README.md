@@ -76,7 +76,7 @@ The home page allows users to view their stored notes and manage them efficientl
 
 Submit Suggestion
 
-Users can submit suggestions that contribute to the community.
+Users can submit suggestions that contribute to the community.    ![Image](https://github.com/user-attachments/assets/c9ca1682-daad-403b-8f6e-604ced7c150c)
 
 
 
