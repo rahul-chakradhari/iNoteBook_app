@@ -43,16 +43,6 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/sugg" ? "active" : ""
-                }`}
-                to="/sugg"
-              >
-                Suggestion
-              </Link>
-            </li>
           </ul>
           <form className="d-flex">
             <Link className="btn btn-primary mx-1" to="/login" role="button">
@@ -60,6 +50,9 @@ const Navbar = () => {
             </Link>
             <Link className="btn btn-primary mx-1" to="/signup" role="button">
               Signup
+            </Link>
+            <Link className="btn btn-primary mx-1" to="/sugg" role="button">
+              Suggestion
             </Link>
           </form>
         </div>

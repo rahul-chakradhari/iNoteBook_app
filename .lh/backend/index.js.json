@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1739440655739,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739466069680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n \r\n // Available Routes\r\n app.use(\"/api/auth\", require(\"./routes/auth\"));\r\n app.use(\"/api/notes\", require(\"./routes/notes\"));\r\n+app.use(\"/api/suggestions\", require(\"./routes/suggestions\"));\r\n \r\n app.listen(port, () => {\r\n   console.log(`iNotebook backend listening at http://localhost:${port}`);\r\n });\r\n"
+                },
+                {
+                    "date": 1739466440794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n \r\n // Available Routes\r\n app.use(\"/api/auth\", require(\"./routes/auth\"));\r\n app.use(\"/api/notes\", require(\"./routes/notes\"));\r\n-app.use(\"/api/suggestions\", require(\"./routes/suggestions\"));\r\n+app.use(\"/api/suggestions\", require(\"./routes/sugg\"));\r\n \r\n app.listen(port, () => {\r\n   console.log(`iNotebook backend listening at http://localhost:${port}`);\r\n });\r\n"
+                },
+                {
+                    "date": 1739466469580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n \r\n // Available Routes\r\n app.use(\"/api/auth\", require(\"./routes/auth\"));\r\n app.use(\"/api/notes\", require(\"./routes/notes\"));\r\n-app.use(\"/api/suggestions\", require(\"./routes/sugg\"));\r\n+app.use(\"/api/sugg\", require(\"./routes/sugg\"));\r\n \r\n app.listen(port, () => {\r\n   console.log(`iNotebook backend listening at http://localhost:${port}`);\r\n });\r\n"
                 }
             ],
             "date": 1739440655739,

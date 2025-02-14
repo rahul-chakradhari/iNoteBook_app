@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1739441185675,
@@ -12,6 +12,22 @@
                 {
                     "date": 1739463901464,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   return (\r\n     <nav className=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n       <div className=\"container-fluid\">\r\n         <Link className=\"navbar-brand\" to=\"/\">\r\n-          iNotebook\r\n+          iNotebook <i class=\"fa-solid fa-book\"></i>\r\n         </Link>\r\n         <button\r\n           className=\"navbar-toggler\"\r\n           type=\"button\"\r\n"
+                },
+                {
+                    "date": 1739467141963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,8 +50,11 @@\n             </Link>\r\n             <Link className=\"btn btn-primary mx-1\" to=\"/signup\" role=\"button\">\r\n               Signup\r\n             </Link>\r\n+            <Link className=\"btn btn-primary mx-1\" to=\"/sugg\" role=\"button\">\r\n+              Suggestion\r\n+            </Link>\r\n           </form>\r\n         </div>\r\n       </div>\r\n     </nav>\r\n"
+                },
+                {
+                    "date": 1739467423800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   return (\r\n     <nav className=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n       <div className=\"container-fluid\">\r\n         <Link className=\"navbar-brand\" to=\"/\">\r\n-          iNotebook <i class=\"fa-solid fa-book\"></i>\r\n+          iNotebook <i className=\"fa-solid fa-book\"></i>\r\n         </Link>\r\n         <button\r\n           className=\"navbar-toggler\"\r\n           type=\"button\"\r\n"
+                },
+                {
+                    "date": 1739468034703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,8 +41,11 @@\n                 to=\"/about\"\r\n               >\r\n                 About\r\n               </Link>\r\n+              <Link className=\"btn btn-primary mx-1\" to=\"/sugg\" role=\"button\">\r\n+                Suggestion\r\n+              </Link>\r\n             </li>\r\n           </ul>\r\n           <form className=\"d-flex\">\r\n             <Link className=\"btn btn-primary mx-1\" to=\"/login\" role=\"button\">\r\n@@ -50,11 +53,8 @@\n             </Link>\r\n             <Link className=\"btn btn-primary mx-1\" to=\"/signup\" role=\"button\">\r\n               Signup\r\n             </Link>\r\n-            <Link className=\"btn btn-primary mx-1\" to=\"/sugg\" role=\"button\">\r\n-              Suggestion\r\n-            </Link>\r\n           </form>\r\n         </div>\r\n       </div>\r\n     </nav>\r\n"
+                },
+                {
+                    "date": 1739468102036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,16 @@\n                 to=\"/about\"\r\n               >\r\n                 About\r\n               </Link>\r\n-              <Link className=\"btn btn-primary mx-1\" to=\"/sugg\" role=\"button\">\r\n+            </li>\r\n+            <li className=\"nav-item\">\r\n+              <Link\r\n+                className={`nav-link ${\r\n+                  location.pathname === \"/sugg\" ? \"active\" : \"\"\r\n+                }`}\r\n+                to=\"/sugg\"\r\n+              >\r\n                 Suggestion\r\n               </Link>\r\n             </li>\r\n           </ul>\r\n"
                 }
             ],
             "date": 1739441185675,

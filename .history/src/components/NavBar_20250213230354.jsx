@@ -42,14 +42,7 @@ const Navbar = () => {
               >
                 About
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/sugg" ? "active" : ""
-                }`}
-                to="/sugg"
-              >
+              <Link className="btn btn-primary mx-1" to="/sugg" role="button">
                 Suggestion
               </Link>
             </li>

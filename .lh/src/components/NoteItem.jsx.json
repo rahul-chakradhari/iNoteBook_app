@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1739441200248,
@@ -48,6 +48,10 @@
                 {
                     "date": 1739464994100,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   }\r\n \r\n   return (\r\n     <div className=\"col-md-3\">\r\n-      <div className={`card my-3 ${priorityClass} border-4`}>\r\n+      <div className={`card my-3 ${priorityClass} border-thick`}>\r\n         {\" \"}\r\n         {/* Apply thicker border */}\r\n         <div className=\"card-body\">\r\n           <div className=\"d-flex align-items-center\">\r\n"
+                },
+                {
+                    "date": 1739467660032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,26 +8,24 @@\n \r\n   // Set priority border class based on the note's priority\r\n   let priorityClass = \"\";\r\n   switch (note.priority) {\r\n-    case \"High\":\r\n+    case \"HIGH\":\r\n       priorityClass = \"border-danger\"; // Red border for high priority\r\n       break;\r\n-    case \"Medium\":\r\n+    case \"MED\":\r\n       priorityClass = \"border-warning\"; // Yellow border for medium priority\r\n       break;\r\n-    case \"Low\":\r\n+    case \"LOW\":\r\n       priorityClass = \"border-success\"; // Green border for low priority\r\n       break;\r\n     default:\r\n-      priorityClass = \"border-success\"; // Default to green for Low priority if no priority set\r\n+      priorityClass = \"border-secondary\"; // Default to gray for no priority or undefined\r\n   }\r\n \r\n   return (\r\n     <div className=\"col-md-3\">\r\n       <div className={`card my-3 ${priorityClass} border-thick`}>\r\n-        {\" \"}\r\n-        {/* Apply thicker border */}\r\n         <div className=\"card-body\">\r\n           <div className=\"d-flex align-items-center\">\r\n             <h5 className=\"card-title\">{note.title}</h5>\r\n             <i\r\n"
                 }
             ],
             "date": 1739441200248,

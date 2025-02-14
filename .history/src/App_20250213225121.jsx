@@ -7,7 +7,7 @@ import NoteState from "./context/notes/NoteState";
 import { Alert } from "./components/Alert";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import Suggestion from "./components/Suggestion";
+import Suggestion from "../backend/models/Suggestion";
 function App() {
   return (
     <>

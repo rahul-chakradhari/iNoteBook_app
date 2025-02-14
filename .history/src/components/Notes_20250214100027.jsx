@@ -17,25 +17,25 @@ const Notes = () => {
     id: "",
     etitle: "",
     edescription: "",
-    epriority: "Low",
+    epriority: "Low", // Default priority
   });
 
+  // Modal visibility state
   const [showModal, setShowModal] = useState(false);
-  const [filterPriority, setFilterPriority] = useState("All"); // New state for priority filter
 
   const updateNote = (currentNote) => {
     setNote({
       id: currentNote._id,
       etitle: currentNote.title || "",
       edescription: currentNote.description || "",
-      epriority: currentNote.priority || "Low",
+      epriority: currentNote.priority || "Low", // Set priority from the note
     });
-    setShowModal(true);
+    setShowModal(true); // Open the modal
   };
 
   const handleClick = () => {
-    editNote(note.id, note.etitle, note.edescription, note.epriority);
-    setShowModal(false);
+    editNote(note.id, note.etitle, note.edescription, note.epriority); // Include priority when updating
+    setShowModal(false); // Close the modal after editing
   };
 
   const onChange = (e) => {
@@ -46,31 +46,10 @@ const Notes = () => {
     setNote((prevNote) => ({ ...prevNote, epriority: selectedPriority }));
   };
 
-  const handleFilterChange = (selectedFilter) => {
-    setFilterPriority(selectedFilter);
-  };
-
-  // Filter notes based on selected priority
-  const filteredNotes =
-    filterPriority === "All"
-      ? notes
-      : notes.filter((note) => note.priority === filterPriority);
-
   return (
     <>
       <AddNote />
-
-      {/* Priority Filter Dropdown */}
-      <div className="mb-3">
-        <label className="form-label">Filter by Priority:</label>
-        <Dropdown
-          options={["All", "Low", "Medium", "High"]}
-          selectedOption={filterPriority}
-          handleSelect={handleFilterChange}
-        />
-      </div>
-
-      {/* Modal for editing notes */}
+      {/* Modal */}
       {showModal && (
         <div
           className="modal fade show"
@@ -160,15 +139,14 @@ const Notes = () => {
         </div>
       )}
 
-      {/* Display Notes */}
       <div className="row my-3">
         <h2>
-          Saved Notes <i className="fa-solid fa-clipboard"></i>
+          Saved Notes <i className="fa-solid fa-clipboard"></i>{" "}
         </h2>
         <div className="container mx-2">
-          {filteredNotes.length === 0 && "No notes to display"}
+          {notes.length === 0 && "No notes to display"}
         </div>
-        {filteredNotes.map((note) => (
+        {notes.map((note) => (
           <Noteitem key={note._id} updateNote={updateNote} note={note} />
         ))}
       </div>

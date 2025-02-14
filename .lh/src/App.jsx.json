@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1739441241695,
@@ -28,6 +28,18 @@
                 {
                     "date": 1739442996805,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     <>\n       <NoteState>\n         <Router>\n           <Navbar />\n-          <Alert message=\"This is amazing React course\" />\n+\n           <div className=\"container\">\n             <Routes>\n               <Route path=\"/\" element={<Home />} />\n               <Route path=\"/about\" element={<About />} />\n"
+                },
+                {
+                    "date": 1739467238025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n               <Route path=\"/\" element={<Home />} />\n               <Route path=\"/about\" element={<About />} />\n               <Route path=\"/login\" element={<Login />} />\n               <Route path=\"/signup\" element={<Signup />} />\n+              <Route path=\"/sugg\" element={<Suggestion />} />\n             </Routes>\n           </div>\n         </Router>\n       </NoteState>\n"
+                },
+                {
+                    "date": 1739467281387,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import NoteState from \"./context/notes/NoteState\";\n import { Alert } from \"./components/Alert\";\n import Signup from \"./components/Signup\";\n import Login from \"./components/Login\";\n-\n+import Suggestion from \"../backend/models/Suggestion\";\n function App() {\n   return (\n     <>\n       <NoteState>\n"
+                },
+                {
+                    "date": 1739467385423,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import NoteState from \"./context/notes/NoteState\";\n import { Alert } from \"./components/Alert\";\n import Signup from \"./components/Signup\";\n import Login from \"./components/Login\";\n-import Suggestion from \"../backend/models/Suggestion\";\n+import Suggestion from \"./components/Suggestion\";\n function App() {\n   return (\n     <>\n       <NoteState>\n"
                 }
             ],
             "date": 1739441241695,

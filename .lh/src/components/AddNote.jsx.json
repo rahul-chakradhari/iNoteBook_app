@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1739441116576,
@@ -32,6 +32,14 @@
                 {
                     "date": 1739464014882,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n \r\n   return (\r\n     <div className=\"container my-3\">\r\n       <h2>\r\n-        Add Your Notes<i className=\"fa-solid fa-notes-medical\"></i>\r\n+        Add Your Notes <i className=\"fa-solid fa-notes-medical\"></i>\r\n       </h2>\r\n       <form className=\"my-3\">\r\n         <div className=\"mb-3\">\r\n           <label htmlFor=\"title\" className=\"form-label\">\r\n"
+                },
+                {
+                    "date": 1739467541304,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,22 @@\n   const onChange = (e) => {\r\n     setNote({ ...note, [e.target.name]: e.target.value });\r\n   };\r\n \r\n+  // Dynamically set the button class based on priority\r\n+  const getButtonClass = () => {\r\n+    switch (note.priority) {\r\n+      case \"LOW\":\r\n+        return \"btn btn-success\"; // Green for low priority\r\n+      case \"MED\":\r\n+        return \"btn btn-warning\"; // Yellow for medium priority\r\n+      case \"HIGH\":\r\n+        return \"btn btn-danger\"; // Red for high priority\r\n+      default:\r\n+        return \"btn btn-primary\"; // Default button class\r\n+    }\r\n+  };\r\n+\r\n   return (\r\n     <div className=\"container my-3\">\r\n       <h2>\r\n         Add Your Notes <i className=\"fa-solid fa-notes-medical\"></i>\r\n@@ -84,9 +98,9 @@\n             note.description.length < 5 ||\r\n             !note.priority\r\n           }\r\n           type=\"submit\"\r\n-          className=\"btn btn-primary\"\r\n+          className={getButtonClass()} // Use the dynamic button class\r\n           onClick={handleClick}\r\n         >\r\n           Add Note\r\n         </button>\r\n"
+                },
+                {
+                    "date": 1739467599491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,22 +20,8 @@\n   const onChange = (e) => {\r\n     setNote({ ...note, [e.target.name]: e.target.value });\r\n   };\r\n \r\n-  // Dynamically set the button class based on priority\r\n-  const getButtonClass = () => {\r\n-    switch (note.priority) {\r\n-      case \"LOW\":\r\n-        return \"btn btn-success\"; // Green for low priority\r\n-      case \"MED\":\r\n-        return \"btn btn-warning\"; // Yellow for medium priority\r\n-      case \"HIGH\":\r\n-        return \"btn btn-danger\"; // Red for high priority\r\n-      default:\r\n-        return \"btn btn-primary\"; // Default button class\r\n-    }\r\n-  };\r\n-\r\n   return (\r\n     <div className=\"container my-3\">\r\n       <h2>\r\n         Add Your Notes <i className=\"fa-solid fa-notes-medical\"></i>\r\n@@ -98,9 +84,9 @@\n             note.description.length < 5 ||\r\n             !note.priority\r\n           }\r\n           type=\"submit\"\r\n-          className={getButtonClass()} // Use the dynamic button class\r\n+          className=\"btn btn-primary\"\r\n           onClick={handleClick}\r\n         >\r\n           Add Note\r\n         </button>\r\n"
                 }
             ],
             "date": 1739441116576,
