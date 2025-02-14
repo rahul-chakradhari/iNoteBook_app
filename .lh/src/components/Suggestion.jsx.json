@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 22,
             "patches": [
                 {
                     "date": 1739465480898,
@@ -92,6 +92,10 @@
                 {
                     "date": 1739521795249,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   // Check if the user is logged in (token exists in localStorage)\r\n   useEffect(() => {\r\n     if (!localStorage.getItem(\"token\")) {\r\n       // If token is not present, redirect to login page\r\n-      navigate(\"/login\");\r\n+      navigate(\"/login\", { replace: true });\r\n     }\r\n   }, [navigate]); // Run effect only on component mount\r\n \r\n   const handleChange = (e) => {\r\n@@ -51,34 +51,30 @@\n         }),\r\n       });\r\n \r\n       const json = await response.json();\r\n-      console.log(json); // Log the response to check the structure\r\n \r\n-      // Check for success response from the server\r\n       if (json.success) {\r\n         setAlert({\r\n-          message: \"Suggestion submitted successfully!\",\r\n+          message:\r\n+            \"Your suggestion has been successfully submitted. Thank you for your input!\",\r\n           type: \"success\",\r\n         });\r\n         setSuggestionData({ name: \"\", email: \"\", suggestion: \"\" });\r\n         onSubmitSuccess();\r\n         setTimeout(() => setAlert({ message: \"\", type: \"\" }), 3000);\r\n       } else {\r\n-        // Handle error if the success field is false or not found\r\n-        setAlert(\r\n-          {\r\n-            message:\r\n-              \"Your suggestion has been received! We value your contribution....\",\r\n-            type: \"success\",\r\n-          },\r\n-          1000\r\n-        );\r\n+        setAlert({\r\n+          message:\r\n+            json.message ||\r\n+            \"Failed to submit suggestion. Please try again later.\",\r\n+          type: \"danger\",\r\n+        });\r\n       }\r\n     } catch (error) {\r\n-      // Handle any errors during the fetch request\r\n       setAlert({\r\n-        message: \"Server error, please try again later.\",\r\n+        message:\r\n+          \"Sorry, we couldn't process your suggestion at this time. Please try again later.\",\r\n         type: \"danger\",\r\n       });\r\n     }\r\n   };\r\n@@ -90,11 +86,9 @@\n           {alert.message}\r\n         </div>\r\n       )}\r\n \r\n-      <h3>\r\n-        Submit Your Suggestions <i className=\"fa-solid fa-folder-open\"></i>{\" \"}\r\n-      </h3>\r\n+      <h3>Submit Your Suggestions</h3>\r\n       <form onSubmit={handleSubmit}>\r\n         <div className=\"mb-3\">\r\n           <label htmlFor=\"name\" className=\"form-label\">\r\n             Name\r\n"
+                },
+                {
+                    "date": 1739522694750,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -86,9 +86,11 @@\n           {alert.message}\r\n         </div>\r\n       )}\r\n \r\n-      <h3>Submit Your Suggestions</h3>\r\n+      <h3>\r\n+        Submit Your Suggestions <i className=\"fa-solid fa-folder-open\"></i>{\" \"}\r\n+      </h3>\r\n       <form onSubmit={handleSubmit}>\r\n         <div className=\"mb-3\">\r\n           <label htmlFor=\"name\" className=\"form-label\">\r\n             Name\r\n"
                 }
             ],
             "date": 1739465480898,
