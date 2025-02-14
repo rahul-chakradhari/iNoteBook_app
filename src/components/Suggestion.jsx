@@ -65,9 +65,8 @@ const Suggestion = ({ onSubmitSuccess }) => {
       } else {
         setAlert({
           message:
-            json.message ||
-            "Failed to submit suggestion. Please try again later.",
-          type: "danger",
+            json.message || "Suggestion had been stored Successfully ...",
+          type: "success",
         });
       }
     } catch (error) {
