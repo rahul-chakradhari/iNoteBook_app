@@ -84,13 +84,7 @@ Top Suggestions
 
 The top suggestions section highlights the most liked suggestions from users.  ![Image](https://github.com/user-attachments/assets/20c58383-5d10-455c-b891-cffd4f08b854)
 
-📌 Future Enhancements
 
-Implement dark mode for better UI experience.
-
-Add real-time collaboration on notes.
-
-Improve suggestion ranking algorithm.
 
 
 
