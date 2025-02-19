@@ -1,10 +1,13 @@
+require("dotenv").config();
 const connectToMongo = require("./db");
 const express = require("express");
 var cors = require("cors");
 
-connectToMongo();
 const app = express();
-const port = process.env.PORT || 5000; // Render ke liye dynamic port
+const PORT = process.env.PORT || 5000; // ✅ Render assigns a dynamic port
+
+console.log("MongoDB URI:", process.env.MONGO_URI);
+console.log("🔄 Server will listen on port:", PORT);
 
 app.use(cors());
 app.use(express.json());
@@ -18,6 +21,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 app.use("/api/sugg", require("./routes/sugg"));
 
-app.listen(port, () => {
-  console.log(`iNotebook backend listening at http://localhost:${port}`);
+// ✅ Ensure app listens on process.env.PORT
+app.listen(PORT, () => {
+  console.log(`✅ iNotebook backend listening on port ${PORT}`);
 });
