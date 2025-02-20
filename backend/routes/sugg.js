@@ -27,9 +27,9 @@ router.post(
     body("name", "Name is required").notEmpty(), // Validate name
   ],
   async (req, res) => {
+    console.log(req.body);
     try {
       const { suggestion, email, name } = req.body;
-
       // If there are errors, return Bad request and the errors
       const errors = validationResult(req);
       if (!errors.isEmpty()) {

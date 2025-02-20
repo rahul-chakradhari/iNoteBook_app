@@ -8,7 +8,7 @@ const TopSuggestions = () => {
   const fetchTopSuggestions = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/sugg/top-suggestions",
+        "https://inotebook-app-7-19uj.onrender.com/api/sugg/top-suggestions",
         {
           method: "GET",
           headers: {

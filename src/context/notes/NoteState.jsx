@@ -2,7 +2,8 @@ import NoteContext from "./noteContext";
 import { useState } from "react";
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "https://inotebook-app-7-19uj.onrender.com";
+
   const [notes, setNotes] = useState([]);
 
   // Get the authentication token
@@ -28,7 +29,7 @@ const NoteState = (props) => {
     }
 
     const response = await fetch(
-      "http://localhost:5000/api/notes/fetchallnotes",
+      "https://inotebook-app-7-19uj.onrender.com/api/notes/fetchallnotes",
       {
         method: "GET",
         headers: {

@@ -38,8 +38,10 @@ const Suggestion = ({ onSubmitSuccess }) => {
     }
 
     try {
+      console.log(suggestionData);
       const response = await fetch("http://localhost:5000/api/sugg/addsugg", {
         method: "POST",
+
         headers: {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
@@ -50,6 +52,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
           suggestion: suggestionData.suggestion,
         }),
       });
+      console.log("Token:", localStorage.getItem("token"));
 
       const json = await response.json();
 
@@ -133,7 +136,11 @@ const Suggestion = ({ onSubmitSuccess }) => {
             required
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className="btn btn-primary"
+        >
           Submit
         </button>
       </form>
