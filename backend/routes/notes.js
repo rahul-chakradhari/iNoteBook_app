@@ -57,8 +57,6 @@ router.post(
 router.put("/updatenote/:id", fetchuser, async (req, res) => {
   try {
     const noteId = req.params.id;
-    console.log("🔹 Update Request Received for:", noteId);
-    console.log("🔹 Request Body:", req.body);
 
     if (!mongoose.Types.ObjectId.isValid(noteId)) {
       return res.status(400).send("Invalid note ID format");
@@ -81,7 +79,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
     };
 
     note = await Note.findByIdAndUpdate(noteId, updatedFields, { new: true });
-    console.log("✅ Note Updated:", note);
+
     res.json(note);
   } catch (error) {
     console.error(error);

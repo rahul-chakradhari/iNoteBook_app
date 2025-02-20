@@ -1,10 +1,9 @@
-require("dotenv").config();
 const connectToMongo = require("./db");
 const express = require("express");
 var cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 5000; // ✅ Render assigns a dynamic port
+const PORT = 5000; // ✅ Render assigns a dynamic port
 
 console.log("MongoDB URI:", process.env.MONGO_URI);
 console.log("🔄 Server will listen on port:", PORT);

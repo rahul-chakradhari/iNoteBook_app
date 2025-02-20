@@ -22,7 +22,6 @@ const Login = () => {
 
       const data = await response.json();
       setLoading(false);
-      console.log("Login Response:", data);
 
       if (response.ok && data.success && data.authtoken) {
         // Store the token

@@ -31,7 +31,7 @@ const Signup = () => {
 
       const json = await response.json();
       setLoading(false);
-      console.log(json); // Check the response in the console
+      // Check the response in the console
 
       if (response.ok) {
         // If response status is 200-299, user is created successfully

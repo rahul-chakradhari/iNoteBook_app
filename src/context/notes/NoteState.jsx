@@ -20,7 +20,7 @@ const NoteState = (props) => {
   // Get all Notes
   const getNotes = async () => {
     const token = localStorage.getItem("token"); // ✅ Get token
-    console.log("Using Token:", token); // ✅ Check if token is available
+    // ✅ Check if token is available
 
     if (!token) {
       console.error("No token found. User is not authenticated.");
@@ -39,7 +39,7 @@ const NoteState = (props) => {
     );
 
     const data = await response.json();
-    console.log("Notes Response:", data); // ✅ Debugging
+    // ✅ Debugging
 
     if (response.ok) {
       setNotes(data);
