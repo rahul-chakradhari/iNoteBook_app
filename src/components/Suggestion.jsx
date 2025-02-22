@@ -39,19 +39,22 @@ const Suggestion = ({ onSubmitSuccess }) => {
 
     try {
       console.log(suggestionData);
-      const response = await fetch("http://localhost:5000/api/sugg/addsugg", {
-        method: "POST",
+      const response = await fetch(
+        "https://inotebook-app-7-19uj.onrender.com//api/sugg/addsugg",
+        {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("token"),
-        },
-        body: JSON.stringify({
-          name: suggestionData.name,
-          email: suggestionData.email,
-          suggestion: suggestionData.suggestion,
-        }),
-      });
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            name: suggestionData.name,
+            email: suggestionData.email,
+            suggestion: suggestionData.suggestion,
+          }),
+        }
+      );
       console.log("Token:", localStorage.getItem("token"));
 
       const json = await response.json();

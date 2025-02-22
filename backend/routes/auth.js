@@ -1,7 +1,7 @@
 // Importing required modules
 const express = require("express");
 const mongoose = require("mongoose");
-
+const { body, validationResult } = require("express-validator");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
