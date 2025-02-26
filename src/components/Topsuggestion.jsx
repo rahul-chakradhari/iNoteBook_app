@@ -7,16 +7,13 @@ const TopSuggestions = () => {
 
   const fetchTopSuggestions = async () => {
     try {
-      const response = await fetch(
-        "https://inotebook-app-7-19uj.onrender.com/api/sugg/top-suggestions",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": localStorage.getItem("token"), // Include auth-token here
-          },
-        }
-      );
+      const response = await fetch("/api/sugg/top-suggestions", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"), // Include auth-token here
+        },
+      });
 
       const data = await response.json();
       setTopSuggestions(data);

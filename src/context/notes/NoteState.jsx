@@ -1,60 +1,64 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import NoteContext from "./noteContext";
-import { useState } from "react";
 
 const NoteState = (props) => {
-  const host = "https://inotebook-app-7-19uj.onrender.com";
-
+  const host = "http://localhost:5000";
+  const navigate = useNavigate();
   const [notes, setNotes] = useState([]);
 
   // Get the authentication token
   const getAuthToken = () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.error(
-        "Authentication token is missing! User might not be logged in."
-      );
-      return null;
+    const token = localStorage.getItem("authToken");
+    if (!token && window.location.pathname !== "/login") {
+      console.error("No token found. Redirecting to login...");
+      navigate("/login"); // Redirect to login
     }
     return token;
   };
 
-  // Get all Notes
-  const getNotes = async () => {
-    const token = localStorage.getItem("token"); // ✅ Get token
-    // ✅ Check if token is available
-
-    if (!token) {
-      console.error("No token found. User is not authenticated.");
-      return;
+  useEffect(() => {
+    const token = getAuthToken();
+    if (token) {
+      getNotes(token); // Fetch notes only if token is available
     }
+  }, []);
 
-    const response = await fetch(
-      "https://inotebook-app-7-19uj.onrender.com/api/notes/fetchallnotes",
-      {
+  // Get all Notes
+  const getNotes = async (token) => {
+    try {
+      const response = await fetch(`${host}/api/notes/fetchallnotes`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token, // ✅ Send token in headers
+          "auth-token": token,
         },
+      });
+
+      if (response.status === 401) {
+        console.error("Unauthorized! Invalid token. Redirecting to login...");
+        localStorage.removeItem("authToken"); // Remove invalid token
+        navigate("/login"); // Redirect to login
+        return;
       }
-    );
 
-    const data = await response.json();
-    // ✅ Debugging
+      if (!response.ok) {
+        throw new Error("Failed to fetch notes");
+      }
 
-    if (response.ok) {
+      const data = await response.json();
       setNotes(data);
-    } else {
-      console.error("Failed to fetch notes:", data.error);
+    } catch (error) {
+      console.error("Error fetching notes:", error);
     }
   };
 
   // Add a Note
   const addNote = async (title, description, priority) => {
-    try {
-      const token = getAuthToken();
-      if (!token) return;
+    const token = getAuthToken();
+    if (!token) return;
 
+    try {
       const response = await fetch(`${host}/api/notes/addnote`, {
         method: "POST",
         headers: {
@@ -77,10 +81,10 @@ const NoteState = (props) => {
 
   // Delete a Note
   const deleteNote = async (id) => {
-    try {
-      const token = getAuthToken();
-      if (!token) return;
+    const token = getAuthToken();
+    if (!token) return;
 
+    try {
       const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
         method: "DELETE",
         headers: {
@@ -101,10 +105,10 @@ const NoteState = (props) => {
 
   // Edit a Note
   const editNote = async (id, title, description, priority) => {
-    try {
-      const token = getAuthToken();
-      if (!token) return;
+    const token = getAuthToken();
+    if (!token) return;
 
+    try {
       const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
         method: "PUT",
         headers: {

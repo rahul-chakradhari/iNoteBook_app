@@ -7,6 +7,24 @@ const Login = () => {
   const [alert, setAlert] = useState(""); // Error alert state
   const [successMessage, setSuccessMessage] = useState(""); // Success message state
   const navigate = useNavigate();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`${host}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const json = await response.json();
+    if (json.success) {
+      localStorage.setItem("token", json.authToken);
+      navigate("/");
+    } else {
+      alert("Invalid Credentials");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,14 +32,11 @@ const Login = () => {
     setAlert(""); // Reset error before making request
 
     try {
-      const response = await fetch(
-        "https://inotebook-app-7-19uj.onrender.com/api/auth/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(credentials),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      });
 
       const data = await response.json();
       setLoading(false);

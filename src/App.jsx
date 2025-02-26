@@ -17,7 +17,7 @@ function App() {
   const fetchTopSuggestions = async () => {
     try {
       const response = await fetch(
-        "https://inotebook-app-7-19uj.onrender.com/api/sugg/top-suggestions"
+        "http://localhost:5000/api/sugg/top-suggestions"
       );
       const data = await response.json();
       setTopSuggestions(data);
@@ -33,8 +33,8 @@ function App() {
   }, []);
 
   return (
-    <NoteState>
-      <Router>
+    <Router>
+      <NoteState>
         <Navbar />
         <div className="container">
           <Routes>
@@ -57,8 +57,8 @@ function App() {
             />
           </Routes>
         </div>
-      </Router>
-    </NoteState>
+      </NoteState>
+    </Router>
   );
 }
 

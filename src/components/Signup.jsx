@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -14,28 +14,26 @@ const Signup = () => {
     setError(""); // Reset error before making the request
 
     try {
-      const response = await fetch(
-        "https://inotebook-app-7-19uj.onrender.com/api/auth/createuser",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: user.name,
-            email: user.email,
-            password: user.password,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: user.name,
+          email: user.email,
+          password: user.password,
+        }),
+      });
 
       const json = await response.json();
+      console.log(json); // Log the server response
+
       setLoading(false);
-      // Check the response in the console
 
       if (response.ok) {
-        // If response status is 200-299, user is created successfully
-        localStorage.setItem("token", json.authtoken);
+        // If the signup is successful, save the token in localStorage
+        localStorage.setItem("authToken", json.token); // Assuming your API returns a token in `json.token`
 
         // Show success alert
         setSuccessMessage("Welcome to iNotebook! Your journey begins now...");
@@ -43,7 +41,7 @@ const Signup = () => {
         // Wait for 1 second before redirecting
         setTimeout(() => {
           setSuccessMessage(""); // Clear the success message
-          navigate("/"); // Redirect to home page after 1 second
+          navigate("/"); // Redirect to the home page after 1 second
         }, 1000); // 1 second delay
       } else {
         // If response is not ok, show error message
@@ -68,16 +66,18 @@ const Signup = () => {
       )}
       {/* Show error alert */}
       {error && <div className="alert alert-danger mt-3">{error}</div>}
+
       <h2>
-        Signup <i className="fa-solid fa-user-plus"></i>{" "}
-      </h2>{" "}
+        Signup <i className="fa-solid fa-user-plus"></i>
+      </h2>
       <br />
       <h6>
         <i>
-          * If logged in user then go to login page <br />{" "}
+          * If logged in user then go to login page <br />
         </i>
-        * Name should be atleast 5 characters length <br />
-        * password should be 8 character length <br />* email is unique
+        * Name should be at least 5 characters length <br />
+        * Password should be at least 8 characters length <br />* Email is
+        unique
       </h6>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

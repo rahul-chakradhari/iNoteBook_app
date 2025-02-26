@@ -40,7 +40,7 @@ const Suggestion = ({ onSubmitSuccess }) => {
     try {
       console.log(suggestionData);
       const response = await fetch(
-        "https://inotebook-app-7-19uj.onrender.com//api/sugg/addsugg",
+        "http:/localhost:5000/api/auth/createuser//api/sugg/addsugg",
         {
           method: "POST",
 
